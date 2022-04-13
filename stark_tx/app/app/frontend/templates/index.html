@@ -169,6 +169,15 @@
             position: absolute;
         }
 
+        .starkware-logo {
+            display: flex;
+            justify-content: center;
+        }
+
+        .starkware-logo img {
+            width: 280px;
+        }
+
     </style>
 </head>
 
@@ -257,6 +266,9 @@
                 well as technical support.
             </p>
             <p>With thanks for support from:</p>
+            <div class="starkware-logo">
+                <img src="/static/images/Starkware_logo.svg" />
+            </div>
             <p>The StarkNet community is invited to contribute to the codebase via Pull Request or Issue, and anyone
                 can launch their own instances of StarkTx. See the GitHub repo for more information
                 <a id="starktx_github_link" href="https://github.com/TokenFlowInsights/StarkTx" target="_blank"
@@ -282,6 +294,21 @@
 </div>
 
 <script type="text/javascript">
+    document.addEventListener("DOMContentLoaded", function () {
+        function trackDecode() {
+            fathom.trackGoal("I8FDYNFM", 0)
+        }
+
+        document.getElementById("tx_submit").addEventListener("click", trackDecode)
+
+        function trackGitHub() {
+            fathom.trackGoal("SHT6FOG1", 0)
+        }
+
+        document.getElementById("starktx_github_link").addEventListener("click", trackGitHub)
+
+    });
+
     function onSubmit(e) {
         const tx = document.getElementById(`tx`).value;
         if (!tx || checkTxHash(tx) === false) {
